@@ -39,7 +39,7 @@ function get( site ) {
 			type: 'BasicStep',
 			target: 'sidebar',
 			placement: 'beside',
-			next: ( () => {
+			next: ( ( () => {
 				if ( site && site.is_previewable ) {
 					return 'preview';
 				}
@@ -47,7 +47,7 @@ function get( site ) {
 					return 'themes';
 				}
 				return 'finish';
-			}() ),
+			} )() ),
 		},
 		preview: {
 			target: 'site-card-preview',
