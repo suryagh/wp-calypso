@@ -110,7 +110,7 @@ const flows = {
 	},
 
 	main: {
-		steps: [ 'survey', 'themes', 'domains', 'plans', 'survey-user' ],
+		steps: [ 'survey', 'themes', 'domains', 'plans', 'user' ],
 		destination: getSiteDestination,
 		description: 'The current best performing flow in AB tests',
 		lastModified: '2016-05-03'
@@ -125,14 +125,14 @@ const flows = {
 
 	/* WP.com homepage flows */
 	website: {
-		steps: [ 'survey', 'themes', 'domains', 'plans', 'survey-user' ],
+		steps: [ 'survey', 'themes', 'domains', 'plans', 'user' ],
 		destination: getSiteDestination,
 		description: 'This flow was originally used for the users who clicked "Create Website" on the two-button homepage. It is now linked to from the default homepage CTA as the main flow was slightly behind given translations.',
 		lastModified: '2016-05-03'
 	},
 
 	blog: {
-		steps: [ 'survey', 'themes', 'domains', 'plans', 'survey-user' ],
+		steps: [ 'survey', 'themes', 'domains', 'plans', 'user' ],
 		destination: getSiteDestination,
 		description: 'This flow was originally used for the users who clicked "Create Blog" on the two-button homepage. It is now used from blog-specific landing pages so that verbiage in survey steps refers to "blog" instead of "website".',
 		lastModified: '2016-05-03'
@@ -156,14 +156,14 @@ const flows = {
 	},
 
 	'delta-blog': {
-		steps: [ 'survey', 'themes', 'domains', 'plans', 'survey-user' ],
+		steps: [ 'survey', 'themes', 'domains', 'plans', 'user' ],
 		destination: getSiteDestination,
 		description: 'A copy of the `blog` flow for the Delta email campaigns. Half of users who go through this flow receive a blogging-specific drip email series.',
 		lastModified: '2016-03-09'
 	},
 
 	'delta-site': {
-		steps: [ 'survey', 'themes', 'domains', 'plans', 'survey-user' ],
+		steps: [ 'survey', 'themes', 'domains', 'plans', 'user' ],
 		destination: getSiteDestination,
 		description: 'A copy of the `website` flow for the Delta email campaigns. Half of users who go through this flow receive a website-specific drip email series.',
 		lastModified: '2016-03-09'
@@ -177,21 +177,21 @@ const flows = {
 	},
 
 	desktop: {
-		steps: [ 'survey', 'themes', 'domains', 'plans', 'survey-user' ],
+		steps: [ 'survey', 'themes', 'domains', 'plans', 'user' ],
 		destination: getPostsDestination,
 		description: 'Signup flow for desktop app',
 		lastModified: '2016-05-25'
 	},
 
 	app: {
-		steps: [ 'survey', 'themes', 'domains', 'plans', 'survey-user' ],
+		steps: [ 'survey', 'themes', 'domains', 'plans', 'user' ],
 		destination: getPostsDestination,
 		description: 'Used as a web-based control to test the "desktop" flow',
 		lastModified: '2016-05-25'
 	},
 
 	layout: {
-		steps: [ 'survey', 'design-type', 'themes', 'domains', 'plans', 'survey-user' ],
+		steps: [ 'survey', 'design-type', 'themes', 'domains', 'plans', 'user' ],
 		destination: getSiteDestination,
 		description: 'Signup flow with homepage pattern selection (Triforce) step',
 		lastModified: '2016-04-21'
