@@ -15,6 +15,7 @@ var cartItems = require( 'lib/cart-values' ).cartItems,
 	DomainRegistrationSuggestion = require( 'components/domains/domain-registration-suggestion' ),
 	DomainProductPrice = require( 'components/domains/domain-product-price' ),
 	analyticsMixin = require( 'lib/mixins/analytics' ),
+	abtest = require( 'lib/abtest' ).abtest,
 	upgradesActions = require( 'lib/upgrades/actions' ),
 	{ getCurrentUser } = require( 'state/current-user/selectors' );
 
@@ -72,7 +73,7 @@ var MapDomainStep = React.createClass( {
 					</div>
 
 					<DomainProductPrice
-						isPlanRequired
+						requiresPlan={ abtest( 'domainsWithPlansOnly' ) === 'plansOnly' }
 						freeWithPlan={ cartItems.isNextDomainFree( this.props.cart ) }
 						price={ price } />
 

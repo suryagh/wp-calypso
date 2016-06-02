@@ -50,7 +50,7 @@ var DomainSuggestion = React.createClass( {
 				<div className="domain-suggestion__content">
 					{ this.props.children }
 					<DomainProductPrice
-						isPlanRequired
+						requiresPlan={ abtest( 'domainsWithPlansOnly' ) === 'plansOnly' }
 						freeWithPlan={ isNextDomainFree( this.props.cart ) }
 						isLoading={ this.props.isLoading }
 						price={ this.props.price }/>
