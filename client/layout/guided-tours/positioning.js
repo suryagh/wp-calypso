@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import startsWith from 'lodash/startsWith';
+
+/**
  * Internal dependencies
  */
 import viewport from 'lib/viewport';
@@ -71,8 +76,8 @@ export function getValidatedArrowPosition( { targetSlug, arrow, stepPos } ) {
 		return 'none';
 	}
 
-	if ( ( arrow.startsWith( 'left' ) ||
-		arrow.startsWith( 'right' ) ) &&
+	if ( ( startsWith( arrow, 'left' ) ||
+		startsWith( arrow, 'right' ) ) &&
 		DIALOG_WIDTH > 0.98 * document.documentElement.clientWidth ) {
 		// window not wide enough for adding an arrow
 		// seems good enough for now, can take other things into account later
