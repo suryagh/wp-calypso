@@ -7,7 +7,7 @@ import scrollTo from 'lib/scroll-to';
 const DIALOG_WIDTH = 410;
 const DIALOG_HEIGHT = 150;
 const DIALOG_PADDING = 10;
-const MASTERBAR_HEIGHT = 48;
+const MASTERBAR_HEIGHT = 47;
 
 const middle = ( a, b ) => Math.abs( b - a ) / 2;
 
@@ -41,7 +41,7 @@ const dialogPositioners = {
 	} ),
 	right: () => ( {
 		x: document.documentElement.clientWidth - DIALOG_WIDTH - ( 3 * DIALOG_PADDING ),
-		y: MASTERBAR_HEIGHT + ( 3 * DIALOG_PADDING ),
+		y: MASTERBAR_HEIGHT + 16,
 	} ),
 };
 
