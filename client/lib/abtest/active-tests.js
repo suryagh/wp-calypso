@@ -72,11 +72,11 @@ module.exports = {
 		defaultVariation: 'original'
 	},
 	guidedTours: {
-		datestamp: '20160428',
+		datestamp: '20160603',
 		variations: {
-			original: 70,
-			guided: 15,
-			calypsoOnly: 15
+			original: 34,
+			guided: 50,
+			calypsoOnly: 16
 		},
 		defaultVariation: 'original',
 		allowExistingUsers: true
