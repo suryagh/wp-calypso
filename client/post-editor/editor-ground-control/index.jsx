@@ -24,8 +24,6 @@ const Card = require( 'components/card' ),
 	stats = require( 'lib/posts/stats' ),
 	user = require( 'lib/user' )();
 
-const VERIFICATION_POLL_INTERVAL = 15000;
-
 export default React.createClass( {
 	displayName: 'EditorGroundControl',
 
@@ -66,39 +64,11 @@ export default React.createClass( {
 
 	componentDidMount: function() {
 		if ( userUtils.needsVerificationForSite( this.props.site ) ) {
-			this.pollForVerification();
-		}
-	},
-
-	pollForVerification: function() {
-		let serverPoll;
-		let check = ( signal ) => {
-			// skip server poll if page is in the background
-			// and this was not triggered by a signal
-			if ( document.hidden && !signal ) {
-				return;
-			}
-
-			user.once( 'change', () => {
-				if ( !userUtils.needsVerificationForSite( this.props.site ) ) {
-					// email verification took place
-					this.forceUpdate();
-					clearInterval( serverPoll );
-				}
+			userUtils.pollVerificationForSite( this.props.site )
+			.then( () => {
+				this.forceUpdate();
 			} );
-
-			user.fetch();
-		};
-
-		serverPoll = setInterval( check, VERIFICATION_POLL_INTERVAL );
-
-		// wait for localStorage event (from other windows)
-		window.addEventListener( 'storage', ( e ) => {
-			if ( e.key === '__email_verified_signal__' && e.newValue ) {
-				window.localStorage.removeItem( '__email_verified_signal__' );
-				check( true );
-			}
-		} );
+		}
 	},
 
 	getInitialState: function() {
