@@ -53,10 +53,10 @@ function get( site ) {
 		},
 		preview: {
 			target: 'site-card-preview',
-			arrow: 'left-top',
+			arrow: 'top-left',
 			type: 'ActionStep',
 			iconText: "your site's name",
-			placement: 'beside',
+			placement: 'below',
 			text: i18n.translate( 'Open {{strong}}Preview{{/strong}} to see what your site looks like.', {
 				components: {
 					strong: <strong />,
