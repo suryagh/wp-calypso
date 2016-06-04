@@ -18,16 +18,18 @@ class BasicStep extends Component {
 	render() {
 		const stepPos = getStepPosition( this.props );
 		const stepCoords = posToCss( stepPos );
-		const { text, onNext, onQuit } = this.props;
+		const { text, onNext, onQuit, targetSlug, arrow } = this.props;
 
-		let classes = [ 'guided-tours__step', 'guided-tours__step-glow' ];
-		if ( this.props.targetSlug ) {
-			classes.push( 'guided-tours__step-pointing' );
-		}
-		if ( this.props.targetSlug && this.props.arrow ) {
-			const arrow = getValidatedArrowPosition( { targetSlug: this.props.targetSlug, arrow: this.props.arrow, stepPos: stepPos } );
-			classes.push( 'guided-tours__step-pointing-' + arrow );
-		}
+		const classes = [
+			'guided-tours__step',
+			'guided-tours__step-glow',
+			targetSlug && 'guided-tours__step-pointing',
+			targetSlug && arrow && 'guided-tours__step-pointing-' + getValidatedArrowPosition( {
+				targetSlug,
+				arrow,
+				stepPos
+			} ),
+		].filter( Boolean );
 
 		return (
 			<Card className={ classNames( ...classes ) } style={ stepCoords } >
@@ -144,22 +146,28 @@ class ActionStep extends Component {
 	render() {
 		const stepPos = getStepPosition( this.props );
 		const stepCoords = posToCss( stepPos );
-		const { text } = this.props;
+		const { text, targetSlug, arrow } = this.props;
 
 		let components = {};
 		if ( this.props.icon ) {
-			components.nextNudge = <span>the <Gridicon icon={ this.props.icon } size={ 24 } /></span>
+			components.nextNudge = <span>the <Gridicon icon={ this.props.icon } size={ 24 } /></span>;
 		} else if ( this.props.iconText ) {
-			components.nextNudge = <strong>{ this.props.iconText }</strong>
+			components.nextNudge = <strong>{ this.props.iconText }</strong>;
 		} else {
-			components.nextNudge = <span></span>
+			components.nextNudge = <span></span>;
 		}
 
-		let classes = [ 'guided-tours__step', 'guided-tours__step-action', 'guided-tours__step-glow', 'guided-tours__step-pointing' ];
-		if ( this.props.arrow ) {
-			const arrow = getValidatedArrowPosition( { targetSlug: this.props.targetSlug, arrow: this.props.arrow, stepPos: stepPos } );
-			classes.push( 'guided-tours__step-pointing-' + arrow );
-		}
+		const classes = [
+			'guided-tours__step',
+			'guided-tours__step-action',
+			'guided-tours__step-glow',
+			'guided-tours__step-pointing',
+			arrow && 'guided-tours__step-pointing-' + getValidatedArrowPosition( {
+				targetSlug,
+				arrow,
+				stepPos
+			} ),
+		].filter( Boolean );
 
 		return (
 			<Card className={ classNames( ...classes ) } style={ stepCoords } >
